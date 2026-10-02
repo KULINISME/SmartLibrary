@@ -1,0 +1,19 @@
+syntax = "proto3";
+package peminjaman;
+
+service PeminjamanService {
+  // Fungsi yang akan dipanggil oleh Kios saat mahasiswa scan buku
+  rpc CheckoutBuku (CheckoutRequest) returns (CheckoutResponse) {}
+}
+
+// Data yang dikirim dari Kios ke Server
+message CheckoutRequest {
+  string nim = 1;
+  string isbn = 2;
+}
+
+// Data balasan dari Server ke Kios
+message CheckoutResponse {
+  bool sukses = 1;
+  string pesan = 2;
+}
